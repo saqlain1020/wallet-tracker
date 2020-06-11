@@ -5,10 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wallet Tracker | Main Page</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="containerWrapper flex">
+        <div class="container flex">
+            <div class="signInForm contentWrapper flex">
+                <h1>Sign In</h1>
+                <h3>Email</h3>
+                <input type="text" name="emailSignin" id="emailSignin">
+                <h3>Password</h3>
+                <input type="password" name="passSignin" id="passSignin">
+                <button type="submit" id="signInBtn">Login IN</button>
+            </div>
+            <div class="signUpForm contentWrapper flex">
+                <h1>Sign Up</h1>
+                <h3>Full Name</h3>
+                <input type="text" name="fullNameSignup" id="fullNameSignup">
+                <h3>Email</h3>
+                <input type="text" name="emailSignup" id="emailSignup">
+                <h3>Password</h3>
+                <input type="password" name="passSignup" id="passSignup">
+                <button type="submit" id="signUpBtn">Sign Up</button>
+            </div>
+        </div>
+    </div>
     
-    <script src="index.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCXIxdFez2RIdUBYRZbRyDVZ5Db4isGNj0",
+          authDomain: "wallet-tracker-js-ce5d2.firebaseapp.com",
+          databaseURL: "https://wallet-tracker-js-ce5d2.firebaseio.com",
+          projectId: "wallet-tracker-js-ce5d2",
+          storageBucket: "wallet-tracker-js-ce5d2.appspot.com",
+          messagingSenderId: "713905702729",
+          appId: "1:713905702729:web:8cdaecfc0dc26679b63c98"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
+    <script src="js/index.js"></script>
 </body>
 </html>
