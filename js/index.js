@@ -3,7 +3,31 @@ var firestore = firebase.firestore();
 
 var signInBtn = document.querySelector("#signInBtn");
 var signUpBtn = document.querySelector("#signUpBtn");
+var googleSignInBtn = document.querySelector("#googleSignInBtn");
 
+var googleSignIn = async e =>{
+    e.preventDefault();
+    try {
+        let googleProvider = new firebase.auth.GoogleAuthProvider();
+        let user = await auth.signInWithPopup(googleProvider);
+        let uid = user.user.uid;
+        let isNewUser = user.additionalUserInfo.isNewUser;
+        console.log(user);
+        if(isNewUser){
+            let userInfo = {
+                displayName: user.user.displayName,
+                email: user.user.email,
+                createdAt: new Date()
+            }
+            console.log(userInfo);
+            await firestore.collection("users").doc(uid).set(userInfo);
+            alert("User Added");
+        }
+        
+    } catch (error) {
+        alert(error);
+    }
+}
 var signInSubmission = async e =>{
     e.preventDefault();
     try {
@@ -52,4 +76,4 @@ var signUpSubmission = async e =>{
 
 signInBtn.addEventListener("click",e => signInSubmission(e));
 signUpBtn.addEventListener("click",e => signUpSubmission(e));
-
+googleSignInBtn.addEventListener("click",e => googleSignIn(e));
