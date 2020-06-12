@@ -8,7 +8,36 @@
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <div class="containerWrapper flex">
+        <div class="container">
+            <div class="navBar flex">
+                <div class="logo">Logo</div>
+                <div class="amount">Dollars</div>
+                <div class="name">Name</div>
+                <div class="signOutBtn">SignOut</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+          apiKey: "AIzaSyCXIxdFez2RIdUBYRZbRyDVZ5Db4isGNj0",
+          authDomain: "wallet-tracker-js-ce5d2.firebaseapp.com",
+          databaseURL: "https://wallet-tracker-js-ce5d2.firebaseio.com",
+          projectId: "wallet-tracker-js-ce5d2",
+          storageBucket: "wallet-tracker-js-ce5d2.appspot.com",
+          messagingSenderId: "713905702729",
+          appId: "1:713905702729:web:8cdaecfc0dc26679b63c98"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+      </script>
     <script src="js/dashboard.js"></script>
 </body>
 </html>

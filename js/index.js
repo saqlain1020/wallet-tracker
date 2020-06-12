@@ -23,10 +23,10 @@ var googleSignIn = async e =>{
             await firestore.collection("users").doc(uid).set(userInfo);
             alert("User Added");
             //redirect
-            location.assign(`dashboard.html#${uid}`)
+            location.assign(`dashboard.html`)
         }else{
             //redirect
-            location.assign(`dashboard.html#${uid}`)
+            location.assign(`dashboard.html`)
         }
         
     } catch (error) {
@@ -44,7 +44,7 @@ var signInSubmission = async e =>{
             let userInfo = (await firestore.collection("users").doc(uid).get()).data();
             console.log(userInfo);
             //redirect
-            location.assign(`dashboard.html#${uid}`)
+            location.assign(`dashboard.html`)
         }else{
             alert("Fields Missing...");
             document.getElementById("passSignin").value = "";
@@ -73,7 +73,7 @@ var signUpSubmission = async e =>{
             console.log(userInfo);
             alert("User Added");
             //redirect
-            location.assign(`dashboard.html#${uid}`)
+            location.assign(`dashboard.html`)
         }else{
             alert("Fields Missing...");
             document.getElementById("passSignin").value = "";
@@ -82,6 +82,12 @@ var signUpSubmission = async e =>{
         alert(error);
     }
 }
+auth.onAuthStateChanged(async (user)=>{
+    if(user){
+        location.assign(`dashboard.html`)
+    }
+})
+
 
 signInBtn.addEventListener("click",e => signInSubmission(e));
 signUpBtn.addEventListener("click",e => signUpSubmission(e));
