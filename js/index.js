@@ -22,6 +22,11 @@ var googleSignIn = async e =>{
             console.log(userInfo);
             await firestore.collection("users").doc(uid).set(userInfo);
             alert("User Added");
+            //redirect
+            location.assign(`dashboard.html#${uid}`)
+        }else{
+            //redirect
+            location.assign(`dashboard.html#${uid}`)
         }
         
     } catch (error) {
@@ -38,6 +43,8 @@ var signInSubmission = async e =>{
             let uid = user.user.uid;
             let userInfo = (await firestore.collection("users").doc(uid).get()).data();
             console.log(userInfo);
+            //redirect
+            location.assign(`dashboard.html#${uid}`)
         }else{
             alert("Fields Missing...");
             document.getElementById("passSignin").value = "";
@@ -65,6 +72,8 @@ var signUpSubmission = async e =>{
             await firestore.collection("users").doc(uid).set(userInfo);
             console.log(userInfo);
             alert("User Added");
+            //redirect
+            location.assign(`dashboard.html#${uid}`)
         }else{
             alert("Fields Missing...");
             document.getElementById("passSignin").value = "";
