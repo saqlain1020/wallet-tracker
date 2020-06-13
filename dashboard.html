@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard | Wallet Tracker</title>
     <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="containerWrapper flex">
@@ -14,7 +15,7 @@
                 <div class="logo">Logo</div>
                 <div class="amount">Dollars</div>
                 <div class="name">Name</div>
-                <div class="signOutBtn">SignOut</div>
+                <div class="settingsBtn">Settings</div>
             </div>
             <div class="transactionWrapper">
                 <form class="transactionForm">
@@ -42,7 +43,18 @@
         </div>
     </div>
 
-
+    <div class="popUp">
+        <form class="transactionForm flex">
+            <input type="text" id="title" placeholder="Enter Title">
+            <input type="number" id="cost" placeholder="Enter Cost">
+            <select id="transactionType">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+            </select>
+            <input type="date" id="date">
+            <button class="transactionEditBtn">Edit</button>
+        </form>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>

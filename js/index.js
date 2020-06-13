@@ -18,7 +18,8 @@ var googleSignIn = async e =>{
             let userInfo = {
                 fullName: user.user.displayName,
                 email: user.user.email,
-                createdAt: new Date()
+                createdAt: new Date(),
+                currency: "$"
             }
             console.log(userInfo);
             await firestore.collection("users").doc(uid).set(userInfo);
@@ -68,7 +69,8 @@ var signUpSubmission = async e =>{
             let userInfo = {
                 fullName,
                 email,
-                createdAt: new Date()
+                createdAt: new Date(),
+                currency: "$"
             }
             await firestore.collection("users").doc(uid).set(userInfo);
             console.log(userInfo);
@@ -90,6 +92,12 @@ auth.onAuthStateChanged(async (user)=>{
             location.assign(`dashboard.html`);
         userAdded = false
     }
+    document.querySelector("#resetPassBtn").addEventListener("click",(e)=>{
+        e.preventDefault();
+        auth.sendPasswordResetEmail(document.getElementById("emailSignin").value);
+        document.getElementById("emailSignin").value = "";
+        alert("Password Reset Link Send To Mail.")
+    })
         
 })
 
