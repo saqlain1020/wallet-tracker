@@ -7,6 +7,7 @@ var transactionAddBtn = document.querySelector(".transactionAddBtn");
 var transactionsList = document.querySelector(".transactionsList");
 
 var renderTransactions = async ()=>{
+    transactionsList.innerHTML = "";
     let transactions = await firestore.collection("transactions").where("uid","==",uid).orderBy("date","desc").get();
     let i=1;
     let color;
