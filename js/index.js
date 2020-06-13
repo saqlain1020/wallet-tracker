@@ -4,18 +4,19 @@ var firestore = firebase.firestore();
 var signInBtn = document.querySelector("#signInBtn");
 var signUpBtn = document.querySelector("#signUpBtn");
 var googleSignInBtn = document.querySelector("#googleSignInBtn");
+var uid,userAdded = true;
 
 var googleSignIn = async e =>{
     e.preventDefault();
     try {
         let googleProvider = new firebase.auth.GoogleAuthProvider();
         let user = await auth.signInWithPopup(googleProvider);
-        let uid = user.user.uid;
+        uid = user.user.uid;
         let isNewUser = user.additionalUserInfo.isNewUser;
         console.log(user);
         if(isNewUser){
             let userInfo = {
-                displayName: user.user.displayName,
+                fullName: user.user.displayName,
                 email: user.user.email,
                 createdAt: new Date()
             }
@@ -40,7 +41,7 @@ var signInSubmission = async e =>{
         let pass = document.getElementById("passSignin").value;
         if(email && pass){
             let user = await auth.signInWithEmailAndPassword(email,pass);
-            let uid = user.user.uid;
+            uid = user.user.uid;
             let userInfo = (await firestore.collection("users").doc(uid).get()).data();
             console.log(userInfo);
             //redirect
@@ -62,7 +63,7 @@ var signUpSubmission = async e =>{
         if(email && pass && fullName){
             //Create User
             let user = await auth.createUserWithEmailAndPassword(email,pass);
-            let uid = user.user.uid;
+            uid = user.user.uid;
             //Send User info to Firestore
             let userInfo = {
                 fullName,
@@ -82,10 +83,14 @@ var signUpSubmission = async e =>{
         alert(error);
     }
 }
+
 auth.onAuthStateChanged(async (user)=>{
-    if(user){
-        location.assign(`dashboard.html`)
+    if(userAdded){
+        if(user)
+            location.assign(`dashboard.html`);
+        userAdded = false
     }
+        
 })
 
 
