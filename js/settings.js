@@ -7,6 +7,7 @@ var changeNameBtn = document.querySelector(".changeNameBtn");
 var changeCurrencyBtn = document.querySelector(".changeCurrencyBtn");
 var userInfo,date,uid;
 
+
 var changeCurrency = async (e)=>{
     e.preventDefault();
     try {

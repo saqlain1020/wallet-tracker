@@ -7,33 +7,34 @@
     <title>Wallet Tracker | Main Page</title>
     <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c616abf227.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="containerWrapper flex">
         <div class="container flex">
             <div class="signInForm contentWrapper flex">
                 <h1>Sign In</h1>
-                <button id="googleSignInBtn">Sign In With Google</button>
-                <h3>Email</h3>
-                <input type="text" name="emailSignin" id="emailSignin">
-                <h3>Password</h3>
-                <input type="password" name="passSignin" id="passSignin">
-                <button type="submit" id="signInBtn">Login IN</button>
+                <button id="googleSignInBtn" class="flex"><img src="images/googleIcon.png" width="25px" height="25px">Sign In With Google</button>
+                <!-- <h3>Email</h3> -->
+                <input type="text" name="emailSignin" id="emailSignin" placeholder="Enter Email">
+                <!-- <h3>Password</h3> -->
+                <input type="password" name="passSignin" id="passSignin" placeholder="Enter Password">
+                <button type="submit" id="signInBtn" class="btn flex">Login IN</button>
                 <button type="resetPass" id="resetPassBtn">Reset Pass</button>
             </div>
             <div class="signUpForm contentWrapper flex">
                 <h1>Sign Up</h1>
-                <h3>Full Name</h3>
-                <input type="text" name="fullNameSignup" id="fullNameSignup">
-                <h3>Email</h3>
-                <input type="text" name="emailSignup" id="emailSignup">
-                <h3>Password</h3>
-                <input type="password" name="passSignup" id="passSignup">
-                <button id="signUpBtn">Sign Up</button>
+                <!-- <h3>Full Name</h3> -->
+                <input type="text" name="fullNameSignup" id="fullNameSignup" placeholder="Enter Full Name">
+                <!-- <h3>Email</h3> -->
+                <input type="text" name="emailSignup" id="emailSignup" placeholder="Enter Email">
+                <!-- <h3>Password</h3> -->
+                <input type="password" name="passSignup" id="passSignup" placeholder="Enter Password">
+                <button id="signUpBtn" class="btn flex">Sign Up</button>
             </div>
         </div>
     </div>
-    
+    <canvas class="canvas"></canvas>
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>

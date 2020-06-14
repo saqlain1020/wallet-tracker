@@ -19,6 +19,13 @@ html{
     justify-content: center;
     align-items: center;
 }
+.canvas{
+    width: 100%;
+    /* background-color: lightblue; */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .containerWrapper{
     height: 100vh;
     background: linear-gradient(90deg,var(--color-green-dark),var(--color-green));
@@ -30,6 +37,7 @@ html{
     height: 65%;
     border-radius: 20px;
     box-shadow: 0px 0px 20px;
+    z-index: 2;
 }
 .container .contentWrapper{
     flex-flow: column;
@@ -42,7 +50,76 @@ html{
 }
 .contentWrapper>h1{
     font-family: var(--font-roboto);
-    font-size: 5rem;
+    font-size: 4rem;
+    font-weight: 1000;
+    margin-bottom: 2rem;
+    cursor: default;
+}
+#googleSignInBtn{
+    background-color: white;
+    width: 190px;
+    margin: 1.5rem;
+    margin-bottom: 3rem;
+    justify-content: space-between;
+    font-family: var(--font-roboto);
+    font-size: 1.5rem;
+    padding: 7px;
+    border: 1px solid lightskyblue;
+    box-shadow: 0px 0px 10px 1px #4285F4;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    color: rgb(100, 100, 100);
+}
+#googleSignInBtn:hover{
+    /* transform: scale(1.05); */
+    box-shadow: 0px 0px 15px 1px #4285F4;
+    border-color: #4285F4;
+}
+.contentWrapper>h3{
+    font-family: var(--font-roboto);
+    font-size: 2rem;
     font-weight: bold;
-    
+    margin-bottom: 1rem;
+}
+.contentWrapper>input{
+    height: 3rem;
+    width: 25rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid lightslategray;
+}
+.contentWrapper>input:focus{
+    border-top: 0px;
+    /* border-color: #4285F4; */
+    /* color: lightslategrey; */
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid #4285F4;
+    /* border: 0; */
+    outline-width: 0;
+}
+.contentWrapper .btn{
+    background-color: #4285F4;
+    font-family: var(--font-roboto);
+    font-size: 1.5rem;
+    color: white;
+    width: 110px;
+    height: 40px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.contentWrapper .btn:hover{
+    box-shadow: 0px 0px 5px 1px slategrey;
+}
+.contentWrapper .btn:active{
+    background-color: rgb(52, 102, 182);
+}
+.contentWrapper #resetPassBtn{
+    color: rgb(66, 158, 244);
+    background-color: white;
+    cursor: pointer;
+}
+.contentWrapper #resetPassBtn:hover{
+    color: rgb(1, 63, 163);
 }
