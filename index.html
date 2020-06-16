@@ -11,18 +11,21 @@
 </head>
 <body>
     <div class="containerWrapper flex">
-        <div class="container flex">
+        <div class="container">
             <div class="signInForm contentWrapper flex">
                 <h1>Sign In</h1>
                 <button id="googleSignInBtn" class="flex"><img src="images/googleIcon.png" width="25px" height="25px">Sign In With Google</button>
+                <h3>OR</h3>
                 <!-- <h3>Email</h3> -->
                 <input type="text" name="emailSignin" id="emailSignin" placeholder="Enter Email">
                 <!-- <h3>Password</h3> -->
                 <input type="password" name="passSignin" id="passSignin" placeholder="Enter Password">
+                <p class="alert">asd</p>
                 <button type="submit" id="signInBtn" class="btn flex">Login IN</button>
-                <button type="resetPass" id="resetPassBtn">Reset Pass</button>
+                <span><button type="resetPass" id="resetPassBtn">Reset Pass</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="createAccount" id="createAccountBtn">Create Account</button></span>
             </div>
             <div class="signUpForm contentWrapper flex">
+                <h1 class="backBtn"><i class="fas fa-chevron-circle-left"></i></h1>
                 <h1>Sign Up</h1>
                 <!-- <h3>Full Name</h3> -->
                 <input type="text" name="fullNameSignup" id="fullNameSignup" placeholder="Enter Full Name">
@@ -30,6 +33,7 @@
                 <input type="text" name="emailSignup" id="emailSignup" placeholder="Enter Email">
                 <!-- <h3>Password</h3> -->
                 <input type="password" name="passSignup" id="passSignup" placeholder="Enter Password">
+                <p class="alert">asd</p>
                 <button id="signUpBtn" class="btn flex">Sign Up</button>
             </div>
         </div>
