@@ -7,6 +7,7 @@
     <title>Dashboard | Wallet Tracker</title>
     <link rel="stylesheet" href="css/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="containerWrapper flex">
@@ -50,13 +51,13 @@
 
     <div class="popUp">
         <form class="transactionForm flex">
-            <input type="text" id="title" placeholder="Enter Title">
-            <input type="number" id="cost" placeholder="Enter Cost">
-            <select id="transactionType">
+            <input type="text" class="title" placeholder="Enter Title">
+            <input type="number" class="cost" placeholder="Enter Cost">
+            <select class="transactionType">
                 <option value="expense">Expense</option>
                 <option value="income">Income</option>
             </select>
-            <input type="date" id="date">
+            <input type="date" class="date">
             <button class="transactionEditBtn">Edit</button>
         </form>
     </div>

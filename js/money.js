@@ -72,9 +72,11 @@ request.open('GET', 'https://api.exchangeratesapi.io/latest', true)
 request.onload = function() {
   // Begin accessing JSON data here
   var ratesFetched = JSON.parse(request.response).rates;
+  console.log(ratesFetched);
   fx.base = "EUR";
     fx.rates = {
         "EUR" : 1,
+        "CAD" : ratesFetched.CAD,
         "GBP" : ratesFetched.GBP,
         "HKD" : ratesFetched.HKD,
         "USD" : ratesFetched.USD,
@@ -138,3 +140,5 @@ selection2.addEventListener("change",(e)=>{
   let val = fx.convert(input1.value, {from: selection1.value, to: selection2.value});
   input2.value = val.toFixed(3);
 })
+
+

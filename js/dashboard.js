@@ -11,6 +11,7 @@ var currency;
 var transactionArr = [];
 var searchBtn = document.querySelector(".searchBtn")
 var searchResetBtn = document.querySelector(".searchResetBtn");
+var user;
 
 var deleteBtnClicked = async (docId)=>{
     try {
@@ -23,10 +24,10 @@ var deleteBtnClicked = async (docId)=>{
 var transactionEditBtnClicked = async (e,id) =>{
     e.preventDefault();
     try {
-        let title = document.querySelector(".popUp #title").value;
-        let cost  = document.querySelector(".popUp #cost").value;
-        let date = new Date(document.querySelector(".popUp #date").value);
-        let type = document.querySelector(".popUp #transactionType").value;
+        let title = document.querySelector(".popUp .title").value;
+        let cost  = document.querySelector(".popUp .cost").value;
+        let date = new Date(document.querySelector(".popUp .date").value);
+        let type = document.querySelector(".popUp .transactionType").value;
         if(title && cost && date && type){
             let transactionObj = {
                 title,
@@ -62,11 +63,11 @@ var searchBtnClicked = async (e)=>{
 var showTransactionDetails = async (id)=>{
     try{
         let transaction = (await firestore.collection("transactions").doc(id).get()).data();
-        document.querySelector(".popUp #title").value = transaction.title;
-        document.querySelector(".popUp #cost").value = transaction.cost;
-        document.querySelector(".popUp #title").value = transaction.title;
-        document.querySelector(".popUp #transactionType").value = transaction.type;
-        document.querySelector(".popUp #date").value = transaction.date.toDate().toISOString().split("T")[0];
+        document.querySelector(".popUp .title").value = transaction.title;
+        document.querySelector(".popUp .cost").value = transaction.cost;
+        document.querySelector(".popUp .title").value = transaction.title;
+        document.querySelector(".popUp .transactionType").value = transaction.type;
+        document.querySelector(".popUp .date").value = transaction.date.toDate().toISOString().split("T")[0];
     }catch(error){
         console.log(error);
     }
@@ -135,8 +136,13 @@ var transactionSubmission = async (e) =>{
                 type,
                 uid
             }
-            await firestore.collection("transactions").add(transactionObj);
-            renderTransactions( await fetchTransactions());
+            if(user.emailVerified){
+                await firestore.collection("transactions").add(transactionObj);
+                renderTransactions( await fetchTransactions());
+            }else{
+                alert("Email Not Verified\nCheck Mail Or\nGo to Settings Page");
+            }
+            
         }
     } catch (error) {
         console.log(error);
@@ -159,6 +165,7 @@ var fetchUser = async (uid)=>{
 auth.onAuthStateChanged(async user=>{
     if(user){
         uid = user.uid;
+        window.user = user;
         fetchUser(uid);
         renderTransactions(await fetchTransactions());
     }else{

@@ -12,6 +12,7 @@ html{
     --color-green-dark: #1c926b;
     --font-normal-curvy: 'Balsamiq Sans', cursive;
     --font-roboto: 'Roboto', sans-serif;
+    --font-raleway: 'Raleway', sans-serif;
 }
 .flex{
     display: flex;

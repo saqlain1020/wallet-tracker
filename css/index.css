@@ -12,12 +12,10 @@ html{
     --color-green-dark: #1c926b; */
     --color-green: #1db951 ;
     --color-green-dark: #083517;
-    /* --color-btn: #4285F4; */
     --color-btn: #1db951;
-
     --font-normal-curvy: 'Balsamiq Sans', cursive;
     --font-roboto: 'Roboto', sans-serif;
-
+    --font-raleway: 'Raleway', sans-serif;
 }
 .flex{
     display: flex;
@@ -25,7 +23,7 @@ html{
     align-items: center;
 }
 .canvas{
-    width: 100%;
+    /* width: 100%; */
     /* background-color: lightblue; */
     position: absolute;
     top: 0;
@@ -38,14 +36,15 @@ html{
 .container{
     background: white;
     width: 500px;
-    height: 65%;
+    height: 60rem;
     border-radius: 20px;
     box-shadow: 0px 0px 20px;
     z-index: 2;
+    margin: 0 20px;
 }
 .container .contentWrapper{
     flex-flow: column;
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     position: relative;
 }
@@ -67,7 +66,7 @@ html{
     transition: opacity 300ms ease-in-out;
 }
 .contentWrapper>h1{
-    font-family: var(--font-roboto);
+    font-family: var(--font-raleway);
     font-size: 4rem;
     font-weight: 1000;
     margin-bottom: 2rem;
@@ -157,9 +156,11 @@ html{
     left: 2rem;
     border-radius: 50%;
     font-size: 3.5rem;
+    box-shadow: 2px 2px 5px slategray;
+    transition: all 100ms ease-in-out;
 }
 .contentWrapper .backBtn>i:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 .contentWrapper .alert{
     color: red;
@@ -168,4 +169,31 @@ html{
     transition: all 200ms ease-in-out;
     font-family: var(--font-normal-curvy);
     opacity: 0;
+}
+.currencyConverterBtn{
+    position: absolute;
+    top: calc(100% - 30px);
+    left: calc(100% - 130px);
+    color: var(--color-btn);
+    font-size: 1.2rem;
+    font-family: var(--font-normal-curvy);
+    cursor: pointer;
+}
+.currencyConverterBtn:hover{
+    color: var(--color-green-dark);
+}
+.intro{
+    position: absolute;
+    width: 200px;
+    top: calc(100% - 30px);
+    left: 20px;
+    color: var(--color-btn);
+    font-size: 1.2rem;
+    font-family: var(--font-normal-curvy);
+    cursor: default;
+}
+@media only screen and (max-height: 649px){
+    .container{
+        height: 50rem;
+    }
 }

@@ -74,6 +74,7 @@ var signUpSubmission = async e =>{
                 currency: "$"
             }
             await firestore.collection("users").doc(uid).set(userInfo);
+            await user.sendEmailVerification();
             //redirect
             location.assign(`dashboard.html`)
         }else{
@@ -154,8 +155,10 @@ backBtn.addEventListener("click",e=>backBtnClicked(e));
 *********************************************
 */
 var canvas = document.querySelector(".canvas");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+var containerHeight = document.querySelector('.containerWrapper').getBoundingClientRect().height;
+var containerWidth = document.querySelector('.containerWrapper').getBoundingClientRect().width;
+canvas.width = containerWidth;
+canvas.height = containerHeight;
 var c = canvas.getContext('2d');
 var mouse={
     x: undefined,
@@ -171,8 +174,8 @@ function Circle(x,y,radius,ySpeed,color){
     this.radius = radius;
     this.ySpeed = ySpeed;                                   //Vertical rising speed
     this.color = color;
-    this.innerHeight = innerHeight;                         //Height of window of canvas
-    this.innerWidth = innerWidth;                           //Width
+    this.innerHeight = containerHeight;                         //Height of window of canvas
+    this.innerWidth = containerWidth;                           //Width
     //Draw Circle function
     this.draw = ()=>{
         c.beginPath();                                      
@@ -188,13 +191,13 @@ function Circle(x,y,radius,ySpeed,color){
             this.radius-=0.02;
         //If radis is zero or less set radius to orignal and position of circle at bottom of screen
         if(this.radius<=0){
-            this.y = innerHeight + radius*2;
+            this.y = containerHeight + radius*2;
             this.radius = radius;
         }
         //Interactivity with mouse
         //Reset radius and y axis position
         if(this.x<=mouse.x+this.radius&&this.x>=mouse.x-this.radius&&this.y<=mouse.y+this.radius&&this.y>=mouse.y-this.radius){
-            this.y = innerHeight + radius*2;
+            this.y = containerHeight + radius*2;
             this.radius = radius;
         }
         //Call draw circle function
@@ -209,7 +212,7 @@ var init=()=>{
         let radius = 6+Math.random()*10;
         let color = `rgba(255,255,255,0.5)`;
         //create circle object with random and predefince values
-        let circle = new Circle(Math.random()*innerWidth,Math.random()*innerHeight,radius,0.5+Math.random()*1,color); 
+        let circle = new Circle(Math.random()*containerWidth,Math.random()*containerHeight,radius,0.5+Math.random()*1,color); 
         circleArr.push(circle);                                 //Send circle obj to array
     }
 }
@@ -219,7 +222,7 @@ init();
 //Animate function for circles
 let animate = ()=>{
     requestAnimationFrame(animate);
-    c.clearRect(0, 0, innerWidth, innerHeight);
+    c.clearRect(0, 0, containerWidth, containerHeight);
     circleArr.forEach(e=>{
         e.update();
     })
@@ -228,8 +231,10 @@ let animate = ()=>{
 animate();
 
 window.addEventListener('resize',()=>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    containerHeight = document.querySelector('.containerWrapper').getBoundingClientRect().height;
+    containerWidth = document.querySelector('.containerWrapper').getBoundingClientRect().width;
+    canvas.width = containerWidth;
+    canvas.height = containerHeight;
     init();
 })
 window.addEventListener('mousemove',e=>{

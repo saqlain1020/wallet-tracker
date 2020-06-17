@@ -14,10 +14,9 @@ html{
     --color-green-dark: #083517;
     /* --color-btn: #4285F4; */
     --color-btn: #1db951;
-
     --font-normal-curvy: 'Balsamiq Sans', cursive;
     --font-roboto: 'Roboto', sans-serif;
-
+    --font-raleway: 'Raleway', sans-serif;
 }
 .flex{
     display: flex;
@@ -50,10 +49,10 @@ html{
     position: relative;
 }
 .contentWrapper>h1{
-    font-family: var(--font-roboto);
+    font-family: var(--font-raleway);
     font-size: 4rem;
-    font-weight: 1000;
-    margin-bottom: 2rem;
+    font-weight: 900;
+    margin-bottom: 5rem;
     cursor: default;
 }
 input::-webkit-outer-spin-button,
@@ -96,7 +95,7 @@ input[type=number] {
 }
 .backBtn{
     color: var(--color-green-dark);
-    width: 20rem;
+    width: 10rem;
     height: 4rem;
     border-radius: 2px;
     font-size: 1.5rem;
@@ -107,6 +106,8 @@ input[type=number] {
     background: linear-gradient(45deg,var(--color-btn),var(--color-btn));
     color: white;
     flex-flow: column;
+    padding-top: 3px;
+    margin-top: 2rem;
 }
 .backBtn>span{
     width: 0;
@@ -118,31 +119,5 @@ input[type=number] {
     box-shadow: 0px 0px 10px slategrey;
 }
 .backBtn:hover>span{
-    width: 13rem;
-}
-svg{
-    width: 20rem;
-    height: 4.9rem;
-    stroke-width: 2px;
-    margin: 2rem;
-    border: 1px solid gray;
-    border-radius: 20px;
-    stroke-dasharray: 20px;
-    /* stroke-linecap: round; */
-    cursor: pointer;
-    transition: all 1s ease-in-out;
-}
-svg:hover{
-    animation: stroke 2s linear infinite;
-}
-svg .b{
-    stroke: var(--color-btn);
-}
-@keyframes stroke{
-    0%{
-        stroke-dashoffset: 0px;
-    }
-    100%{
-        stroke-dashoffset: 200px;
-    }
+    width: 4rem;
 }
