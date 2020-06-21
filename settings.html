@@ -9,13 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c616abf227.js" crossorigin="anonymous"></script>
+    <link rel="icon" 
+    type="image/png" 
+    href="images/Logo.png">
 </head>
 <body>
     <div class="containerWrapper flex">
         <div class="container flex">
             <a href="dashboard.html"><h1 class="backBtn"><i class="fas fa-chevron-circle-left"></i></h1></a>
                 <form>
-                    <h1 class="mainHeading">Welcome!<br>Uer</h1>
+                    <h1 class="mainHeading">Welcome!<br></h1>
                     <h3>Change Name:</h3>
                     <input type="text" id="newName" placeholder="Enter New Name">
                     <span class="changeNameBtn btn">Change</span>
@@ -37,11 +40,13 @@
                     <!-- <label for="imageUpload" class="btn flex">Select Image</label> -->
                     <div class="signOutWrapper flex"><div class="signOutBtn flex">Sign Out</div></div>
                     <p class="alert"></p>
-                    <img src="" class="img" width="90px" height="90px">
+                    <img class="img" width="90px" height="90px">
                 </form>
                 
         </div>
+        <canvas class="canvas"></canvas>
     </div>
+    
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>

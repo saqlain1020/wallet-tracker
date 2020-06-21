@@ -8,38 +8,238 @@ html{
     font-size: 62.5%;
 }
 :root{
-    --color-green: #2fd498;
-    --color-green-dark: #1c926b;
+    --color-green: #1db951 ;
+    --color-green-dark: #083517;
+    --color-btn: #1db951;
     --font-normal-curvy: 'Balsamiq Sans', cursive;
     --font-roboto: 'Roboto', sans-serif;
     --font-raleway: 'Raleway', sans-serif;
+    --font-museo: 'MuseoModerno', cursive;
 }
 .flex{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
+.canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+.wrapper{
+    background: linear-gradient(0deg,var(--color-green-dark),var(--color-green));
+    display: grid;
+    grid-template-rows: minmax(100vh,min-content);
+    align-items: flex-start;
+    padding: 0rem 2rem;
+}
+.containerWrapper{
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(10px,1fr) minmax(min-content,1100px) minmax(10px,1fr);
+    /* Calc for compensating for min 100vh excluding other rows */
+    /* grid-template-rows: 15rem 7rem 7rem minmax(calc(100vh - (15rem + 7rem + 8rem + 7rem)),1fr); */
+    grid-template-rows: 150px 70px 70px min-content;
+    row-gap: 2rem;
+    padding-top: 2rem;
+    align-items: flex-start;
+    /* background: linear-gradient(0deg,var(--color-green-dark),var(--color-green)); */
+    z-index: 1;
+    position: relative;
+}
 .container{
-    width: 70%;
+    grid-area: 4/2;
+    /* width: 100%; */
     transition: filter 300ms ease-in-out;
+    background: white;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border-radius: 5px;
 }
 .navBar{
-    width: 100%;
-    height: 10vh;
-    background-color: lightblue;
+    grid-area: 1/2;
+    height: 15rem;
+    background-color: white;
     justify-content: space-around;
-    font-size: 5rem;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "image amount logo"
+                         "name amount signOut";
+    justify-items: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 1rem;
+
 }
-.transactionsList .transaction{
+
+.navBar .image{
+    grid-area: image;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 2px slategrey;
+    background-color: white;
+    height: 9rem;
+    width: 9rem;
+    overflow: hidden;
+}
+.navBar .image>img{
+    height: 100%;
+    width: 100%;
+}
+.navBar .name{
+    grid-area: name;
+    font-family: var(--font-museo);
+    font-weight: bolder;
+    font-size: 3vmin;
+}
+.navBar .amount{
+    grid-area: amount;
+    font-size: 3vmin;
+    font-family: var(--font-roboto);
+    font-weight: bolder;
+    color: var(--color-green-dark);
+    text-align: center;
+}
+.navBar .amount>b{
+    font-size: 5vmin;
+    font-family: var(--font-roboto);
+    font-weight: bolder;
+    color: var(--color-btn);
+}
+.navBar .logo{
+    grid-area: logo;
+    font-size: 3rem;
+    font-family: var(--font-museo);
+    font-weight: bolder;
+    width: 8rem;
+}
+.navBar .logo>img{
+    width: 100%;
+}
+.navBar .profileOptions{
+    grid-area: signOut;
+    font-size: 3rem;
+    font-family: var(--font-museo);
+    font-weight: bolder;
+    color: var(--color-btn);
+}
+.navBar .profileOptions>i{
+    cursor: pointer;
+}
+.navBar .profileOptions>i:hover{
+    text-shadow: 0px 0px 5px limegreen;
+    transform: scale(1.1);
+}
+.navBar .profileOptions .fa-sign-out-alt{
+    font-size: 3.5rem;
+}
+.searchFormWrapper{
+    grid-area: 2/2;
+    background-color: white;
+    border-radius: 5px;
+    height: 100%;
+}
+.input{
+    height: 3rem;
+    width: 25rem;
+    font-size: 1.5rem;
+    border-bottom: 1px solid lightslategray;
+}
+.input:focus{
+    border-top: 0px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid var(--color-btn);
+    outline-width: 0;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-btn);
+    font-family: var(--font-roboto);
+    font-size: 1.5rem;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 0 1rem;
+}
+.btn:hover{
+    box-shadow: 0px 0px 5px 1px slategrey;
+}
+.btn:active{
+    background-color: var(--color-green-dark);
+}
+.transactionFormWrapper{
+    grid-area: 3/2;
+    background-color: white;
+    border-radius: 5px;
+    height: 100%;
+}
+.transactionFormWrapper .transactionForm{
+    /* width: 100%; */
+    display: grid;
+    /* border: 2px solid black; */
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: min-content min-content min-content min-content min-content;
+    grid-auto-flow: column;
+}
+.transactionForm .input{
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: var(--font-roboto);
+    width: 20rem;
+}
+.transactionForm #transactionType{
+    width: 11rem;
+    font-size: 2rem;
+    font-weight: normal;
+}
+.transactionForm .transactionAddBtn{
+    font-size: 2.2rem;
+    color: var(--color-btn);
+    margin-left: 1rem;
+    background-color: white;
+    transform: scale(1.2);
+    transition: all ease-in-out 100ms;
+    outline-width: 0;
+}
+.transactionForm .transactionAddBtn:active{
+    color: var(--color-green-dark);
+    
+}
+.transactionForm .transactionAddBtn:hover{
+    transform: scale(1.4);
+}
+.transaction{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr;
+    font-size: 2rem;
+    font-weight: 500;
+    color: rgb(50, 50, 50);
+    font-family: var(--font-roboto);
+    text-align: center;
+    border-bottom: 1px solid slategray;
+    padding: 1rem;
+}
+.transaction>div>i{
+    color: var(--color-btn);
+    cursor: pointer;
+}
+.transaction>div .fa-backspace:hover{
+    color: red;
 }
 .popUp{
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background-color: aquamarine;
+    width: 320px;
+    height: 320px;
+    background-color: white;
     top: calc(50vh - 150px);
     left: calc(50vw - 150px);
     border-radius: 20px;
@@ -47,13 +247,122 @@ html{
     padding: 25px;
     transform: scale(0);
     transition: all 300ms ease-in-out;
+    z-index: 2;
 }
 .popUp .transactionForm{
     width: 100%;
     height: 100%;
+    display: flex;
     flex-flow: column;
     justify-content: space-evenly;
+    align-items: center;
 }
-.searchForm{
-    
+.popUp .transactionForm>button{
+    color: var(--color-btn);
+    font-size: 2.5rem;
+    background-color: white;
+}
+.popUp .transactionForm>button:active{
+    color: var(--color-green-dark);
+ 
+}
+.popUp .transactionForm .transactionBackBtn{
+    position: absolute;
+    height: 2.5rem;
+    width: 2.5rem;
+    top: 1rem;
+    left: 1rem;
+    cursor: pointer;
+    transition: all 100ms ease-in-out;
+    box-shadow: 2px 3px 5px slategray;
+    border-radius: 50%;
+}
+.popUp .transactionForm .transactionBackBtn:hover{
+    transform: scale(1.1);
+}
+.popUp .transactionForm .transactionEditBtn{
+    cursor: pointer;
+    transition: all ease-in-out 100ms;
+}
+.popUp .transactionForm .transactionEditBtn:hover{
+    transform: scale(1.05);
+}
+.popUp .transactionForm .heading{
+    font-size: 3rem;
+    /* color: rgb(30, 30, 30); */
+    color: var(--color-green-dark);
+    font-family: var(--font-raleway);
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    margin-bottom: 1rem;
+}
+@media only screen and (max-width: 1100px){
+    .containerWrapper{
+        /* width: 900px; */
+    }
+}
+@media only screen and (max-width: 800px){
+    html{
+        font-size: 50%;
+    }
+}
+@media only screen and (max-width: 650px){
+    .transaction{
+        grid-template-columns: 2fr 2fr 2fr 2fr 1fr 1fr;
+    }
+    .transactionFormWrapper .transactionForm{
+        display: grid;
+        grid-template-columns: min-content min-content min-content min-content ;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "title cost type date"
+                             "add add add add";
+    }
+    .transactionFormWrapper .transactionForm #title{
+        grid-area: title;
+    }
+    .transactionFormWrapper .transactionForm #cost{
+        grid-area: cost;
+    }
+    .transactionFormWrapper .transactionForm #transactionType{
+        grid-area: type;
+    }
+    .transactionFormWrapper .transactionForm #date{
+        grid-area: date;
+    }
+    .transactionFormWrapper .transactionForm .transactionAddBtn{
+        grid-area: add;
+        margin-top: 1rem;
+    }
+    .containerWrapper{
+        /* Calc for compensating for min 100vh excluding other rows */
+        grid-template-rows: 15rem 7rem 9rem minmax(calc(100vh - (15rem + 7rem + 8rem + 9rem)),1fr);
+    }
+    .transactionForm .input{
+        font-size: 1.8rem;
+        font-family: var(--font-roboto);
+        width: 15rem;
+    }
+}
+@media only screen and (max-width: 500px){
+    .transactionFormWrapper .transactionForm{
+        display: grid;
+        grid-template-columns: min-content;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-areas: "title" "cost" "type" "date" "add";
+    }
+    .containerWrapper{
+        /* Calc for compensating for min 100vh excluding other rows */
+        grid-template-rows: 15rem 150px 180px minmax(calc(100vh - (15rem + 150px + 8rem + 180px)),1fr);
+    }
+    .searchForm{
+        grid-area: 2/2;
+        background-color: white;
+        border-radius: 5px;
+        height: 100%;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        flex-flow: column;
+        justify-content: space-evenly;
+    }
 }

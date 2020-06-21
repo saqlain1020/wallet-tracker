@@ -8,32 +8,42 @@
     <link rel="stylesheet" href="css/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=MuseoModerno:wght@400;900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c616abf227.js" crossorigin="anonymous"></script>
+    <link rel="icon" 
+      type="image/png" 
+      href="images/Logo.png">
 </head>
 <body>
-    <div class="containerWrapper flex">
-        <div class="container">
-            <div class="navBar flex">
-                <div class="logo">Logo</div>
-                <div class="amount">Dollars</div>
-                <div class="name">Name</div>
-                <div class="settingsBtn">Settings</div>
+    <div class="wrapper flex">
+        <div class="containerWrapper flex">
+            <div class="navBar">
+                <div class="image"><img width="90px" height="90px"></div>
+                <div class="name"></div>
+                <div class="amount">Balance</div>
+                <div class="logo flex"><img src="images/Logo.png" width="80px"></div>
+                <div class="signOut profileOptions"><i class="fas fa-sign-out-alt" onclick="signOut()"></i>&nbsp;&nbsp;<i class="fas fa-user-cog settingsBtn"></i></div>
             </div>
-            <div class="searchForm flex">
-                <input type="text" id="search" placeholder="Enter Something.">
-                <div class="searchBtn">Search</div>
-                <div class="searchResetBtn">Reset</div>
+            <div class="searchFormWrapper flex">
+                <div class="searchForm flex">
+                    <input type="text" id="search" class="input" placeholder="Enter Search Word.">
+                    <div class="searchBtn btn"><i class="fas fa-search"></i></div>
+                    <div class="searchResetBtn btn"><i class="fas fa-redo-alt"></i></div>
+                </div>
             </div>
-            <div class="transactionWrapper">
+            <div class="transactionFormWrapper flex">
                 <form class="transactionForm">
-                    <input type="text" id="title" placeholder="Enter Title">
-                    <input type="number" id="cost" placeholder="Enter Cost">
-                    <select id="transactionType">
+                    <input type="text" id="title" class="input" placeholder="Enter Title">
+                    <input type="number" id="cost" class="input" placeholder="Enter Cost">
+                    <select id="transactionType" class="input">
                         <option value="expense">Expense</option>
                         <option value="income">Income</option>
                     </select>
-                    <input type="date" id="date">
-                    <button class="transactionAddBtn">+</button>
+                    <input type="date" id="date" class="input">
+                    <button class="transactionAddBtn"><i class="fas fa-plus-circle"></i></button>
                 </form>
+            </div>  
+            <div class="container">
                 <div class="transactionsListWrapper">
                     <div class="transactionsList">
                         <!-- <div class="transaction">
@@ -45,26 +55,30 @@
                         </div> -->
                     </div>
                 </div>
+                
             </div>
         </div>
+        <div class="popUp">
+            <form class="transactionForm">
+                <div class="heading">Transaction Edit</div>
+                <input type="text" class="title input" placeholder="Enter Title">
+                <input type="number" class="cost input" placeholder="Enter Cost">
+                <select class="transactionType input">
+                    <option value="expense">Expense</option>
+                    <option value="income">Income</option>
+                </select>
+                <input type="date" class="date input">
+                <button class="transactionEditBtn"><i class="fas fa-edit"></i></button>
+                <button class="transactionBackBtn"><i class="fas fa-chevron-circle-left"></i></button>
+            </form>
+        </div>
+        <canvas class="canvas"></canvas>
     </div>
-
-    <div class="popUp">
-        <form class="transactionForm flex">
-            <input type="text" class="title" placeholder="Enter Title">
-            <input type="number" class="cost" placeholder="Enter Cost">
-            <select class="transactionType">
-                <option value="expense">Expense</option>
-                <option value="income">Income</option>
-            </select>
-            <input type="date" class="date">
-            <button class="transactionEditBtn">Edit</button>
-        </form>
-    </div>
-
+    
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
     <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
     <script  src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-storage.js"></script>
     <script>
         // Your web app's Firebase configuration
         var firebaseConfig = {

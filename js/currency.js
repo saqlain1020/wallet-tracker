@@ -80,7 +80,7 @@ var init=()=>{
         let radius = 6+Math.random()*10;
         let color = `rgba(255,255,255,0.5)`;
         //create circle object with random and predefince values
-        let circle = new Circle(Math.random()*containerWidth,Math.random()*containerHeight,radius,0.5+Math.random()*1,color); 
+        let circle = new Circle(Math.random()*containerWidth,Math.random()*containerHeight+containerHeight/2,radius,0.5+Math.random()*1,color); 
         circleArr.push(circle);                                 //Send circle obj to array
     }
 }

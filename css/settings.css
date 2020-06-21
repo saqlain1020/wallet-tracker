@@ -20,11 +20,20 @@ html{
     justify-content: center;
     align-items: center;
 }
+.canvas{
+    /* width: 100%; */
+    /* background-color: lightblue; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
 .containerWrapper{
     height: 100vh;
     background: linear-gradient(0deg,var(--color-green-dark),var(--color-green));
 }
 .container{
+    z-index: 1;
     background: white;
     width: 50rem;
     height: 65rem;
