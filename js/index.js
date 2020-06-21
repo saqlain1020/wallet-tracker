@@ -62,6 +62,8 @@ var signUpSubmission = async e =>{
         let email = document.getElementById("emailSignup").value;
         let pass = document.getElementById("passSignup").value;
         let fullName = document.getElementById("fullNameSignup").value;
+        if(fullName.split(' ')[1])
+            fullName = fullName.split(' ')[0]+" "+fullName.split(' ')[1];
         if(email && pass && fullName){
             //Create User
             let user = await auth.createUserWithEmailAndPassword(email,pass);
@@ -74,7 +76,8 @@ var signUpSubmission = async e =>{
                 currency: "$"
             }
             await firestore.collection("users").doc(uid).set(userInfo);
-            await user.sendEmailVerification();
+            //send email is not returned in this case so we cant use it
+            // await user.sendEmailVerification();
             //redirect
             location.assign(`dashboard.html`)
         }else{

@@ -51,6 +51,8 @@ var changeName = async (e)=>{
     e.preventDefault();
     try{
         let name = document.querySelector("#newName").value;
+        if(name.split(' ')[1])
+            name = name.split(' ')[0]+" "+name.split(' ')[1];
         if(name){
             let userObj = {
                 fullName: name

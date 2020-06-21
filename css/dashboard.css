@@ -359,9 +359,6 @@ html{
         background-color: white;
         border-radius: 5px;
         height: 100%;
-        /* display: flex; */
-        /* justify-content: center; */
-        /* align-items: center; */
         flex-flow: column;
         justify-content: space-evenly;
     }
