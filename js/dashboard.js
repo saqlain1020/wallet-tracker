@@ -25,14 +25,12 @@ var deleteBtnClicked = async (docId)=>{
         console.log(error);
     }
 }
-var popUpClose = (e)=>{
-    e.preventDefault();
+var popUpClose = ()=>{
     let container = document.querySelector(".containerWrapper");
     container.style.filter = `blur(0px)`;
     popUp.style.transform = `scale(0)`;
 }
-var transactionEditBtnClicked = async (e,id) =>{
-    e.preventDefault();
+var transactionEditBtnClicked = async (id) =>{
     try {
         let title = document.querySelector(".popUp .title").value;
         let cost  = document.querySelector(".popUp .cost").value;
@@ -47,7 +45,8 @@ var transactionEditBtnClicked = async (e,id) =>{
             }
             await firestore.collection("transactions").doc(id).update(transactionObj);
             renderTransactions(await fetchTransactions());
-            popUpClose(e);
+            popUpClose(this);
+            return false;
         }
     } catch (error) {
         console.log(error);
@@ -71,7 +70,6 @@ var searchBtnClicked = async (e)=>{
 var showTransactionDetails = async (id)=>{
     try{
         let transaction = (await firestore.collection("transactions").doc(id).get()).data();
-        console.log(transaction);
         document.querySelector(".popUp .title").value = transaction.title;
         document.querySelector(".popUp .cost").value = transaction.cost;
         document.querySelector(".popUp .title").value = transaction.title;
@@ -86,7 +84,8 @@ var viewBtnClicked = async (docId)=>{
     let container = document.querySelector(".containerWrapper");
     container.style.filter = `blur(3px)`;
     await showTransactionDetails(docId);
-    transactionEditBtn.addEventListener("click",e=>transactionEditBtnClicked(e,docId));
+    transactionEditBtn.setAttribute("onclick",`return transactionEditBtnClicked("${docId}");return false;`);
+    transactionEditBtn.setAttribute("type","button");
 }
 var fetchTransactions = async ()=>{
     transactionArr = [];
@@ -196,7 +195,6 @@ settingsBtn.addEventListener("click",e=>{
 transactionAddBtn.addEventListener("click",e=>transactionSubmission(e));
 searchBtn.addEventListener("click",e=>searchBtnClicked(e));
 searchResetBtn.addEventListener("click",e=>searchResetBtnClicked(e));
-transactionBackBtn.addEventListener("click",e=>popUpClose(e));
 
 
 /*

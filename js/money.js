@@ -64,6 +64,8 @@
 })(this);
 
 
+//******** Custom API Request from money exchange servers ********* */
+
 var request = new XMLHttpRequest()
 var ratesFetched = []; 
 // Open a new connection, using the GET request on the URL endpoint
@@ -72,7 +74,6 @@ request.open('GET', 'https://api.exchangeratesapi.io/latest', true)
 request.onload = function() {
   // Begin accessing JSON data here
   var ratesFetched = JSON.parse(request.response).rates;
-  console.log(ratesFetched);
   fx.base = "EUR";
     fx.rates = {
         "EUR" : 1,
@@ -110,20 +111,24 @@ request.onload = function() {
         "KRW" : ratesFetched.KRW,
         "MYR" : ratesFetched.MYR
     };
-    
-    // console.log(fx.convert(6, {from: "EUR", to: "INR"}));
-
+  
 }
 
 // Send request
 request.send()
 
-//Page Functionalities
+
+//************** Page Functionalities *****************
+
 var input1 = document.querySelector("#input1");
 var input2 = document.querySelector("#input2");
 var selection1 = document.querySelector("#selection1");
 var selection2 = document.querySelector("#selection2");
-var ans = document.querySelector(".ans");
+
+
+//  Thats how conversion works
+//  ****fx.convert(6, {from: "EUR", to: "INR"});******  
+
 input1.addEventListener("keyup",(e)=>{
     let val = fx.convert(input1.value, {from: selection1.value, to: selection2.value});
     input2.value = val.toFixed(3);

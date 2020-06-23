@@ -7,7 +7,7 @@ var changeNameBtn = document.querySelector(".changeNameBtn");
 var changeCurrencyBtn = document.querySelector(".changeCurrencyBtn");
 var userInfo,date,uid,user;
 
-
+//**************** Red Error Msg Area ***************** */
 var showAlert = (msg)=>{
     let alert = document.querySelector(".alert");
     alert.innerHTML = msg;
@@ -16,10 +16,14 @@ var showAlert = (msg)=>{
         alert.style.opacity = 0;
     },3000)
 }
-async function sendMail(){
+
+//*************** Send Mail for email Verification Function ************ */
+var sendMail = async ()=>{
     await user.sendEmailVerification();
     showAlert("Verification Link Sent");
 }
+
+//*********** Checks if email verified if not creates a link for verification **************** */
 var emailVerification = async (user)=>{
     try{
         let status = user.emailVerified;
@@ -31,6 +35,8 @@ var emailVerification = async (user)=>{
         console.log(error);
     }
 }
+
+//*********** Change Currency value of user **************** */
 var changeCurrency = async (e)=>{
     e.preventDefault();
     try {
@@ -47,6 +53,8 @@ var changeCurrency = async (e)=>{
         showAlert(error);
     }
 }
+
+//********* Change Name of user on firestore *************** */
 var changeName = async (e)=>{
     e.preventDefault();
     try{
@@ -65,6 +73,8 @@ var changeName = async (e)=>{
         showAlert(error);
     }    
 }
+
+//************ Change User Mail************ */
 var changeEmail = async (e,user)=>{
     e.preventDefault();
     try {
@@ -79,6 +89,8 @@ var changeEmail = async (e,user)=>{
         showAlert(error);
     }
 }
+
+//********* Change User Pass ************* */
 var changePass = async (e,user)=>{
     e.preventDefault();
     try {
@@ -89,10 +101,14 @@ var changePass = async (e,user)=>{
         showAlert(error);
     }
 }
+
+//*********Sign Out Btn Clicked ********** */
 var signOut = async (e)=>{
     e.preventDefault();
     await auth.signOut();
 }
+
+//********** Fetch user data using uid *********** */
 var fetchUser = async (uid)=>{    
     try {
         userInfo = (await firestore.collection("users").doc(uid).get()).data();
@@ -124,7 +140,7 @@ auth.onAuthStateChanged(async user=>{
     }
 })
 
-
+// **************************************** Image Related Stuff *****************************************
 /*
 Upload image to firebase storage.
 */
@@ -132,6 +148,9 @@ var imageUpload = document.querySelector('#imageUpload');
 var storage = firebase.storage().ref();
 var imageRef;
 
+//************ Resize Function to shrink image before upload ***********
+
+// No need to understand the code i copied from somewhere and modified it alot and made it a promise
 var resize = async (item)=>{
     return new Promise((resolve)=>{
         //define the width to resize e.g 600px
@@ -173,8 +192,9 @@ var resize = async (item)=>{
         }
         }
     });
-  }
+}
 
+//IMG Upload btn
 imageUpload.addEventListener("change",async (e)=>{
     try{
         let file = e.target.files[0];
@@ -191,6 +211,8 @@ imageUpload.addEventListener("change",async (e)=>{
     }
     
 })
+
+//****** Get image url from fire storage and set it to src of html tag ******** */
 var getImageUrl = async ()=>{
     let u = await imageRef.getDownloadURL();
     document.querySelector('.img').src = u;

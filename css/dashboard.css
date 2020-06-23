@@ -283,6 +283,7 @@ html{
 .popUp .transactionForm .transactionEditBtn{
     cursor: pointer;
     transition: all ease-in-out 100ms;
+    outline-width: 0
 }
 .popUp .transactionForm .transactionEditBtn:hover{
     transform: scale(1.05);

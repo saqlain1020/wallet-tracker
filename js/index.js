@@ -37,6 +37,8 @@ var googleSignIn = async e =>{
         alert(error);
     }
 }
+
+//*********** Sign In Btn CLicked Function **************** */
 var signInSubmission = async e =>{
     e.preventDefault();
     try {
@@ -56,6 +58,8 @@ var signInSubmission = async e =>{
         showAlert(error);
     }
 }
+
+//*********** Sign Up Btn CLicked Function **************** */
 var signUpSubmission = async e =>{
     e.preventDefault();
     try{
@@ -89,6 +93,7 @@ var signUpSubmission = async e =>{
     }
 }
 
+//************* Create Account Btn Clicked ******************* */
 var creatAccountBtnClicked = async (e)=>{
     e.preventDefault();
     let signUpForm = document.querySelector(".container .signUpForm");
@@ -98,6 +103,8 @@ var creatAccountBtnClicked = async (e)=>{
     signUpForm.style.zIndex = 3;
     signUpForm.style.opacity = 1;
 }
+
+//************* Back Btn on SignUp Page **************** */
 var backBtnClicked = async (e)=>{
     e.preventDefault();
     let signUpForm = document.querySelector(".container .signUpForm");
@@ -108,6 +115,8 @@ var backBtnClicked = async (e)=>{
     signInForm.style.opacity = 1; 
     
 }
+
+//**************** Red Error Msg Area ***************** */
 var showAlert = (msg)=>{
     let arr = Array.from(document.querySelectorAll(".contentWrapper .alert"));
     arr.forEach(element=>{
@@ -141,7 +150,6 @@ auth.onAuthStateChanged(async (user)=>{
             showAlert("Enter Email...");
         }
     })
-        
 })
 
 //Listeners
