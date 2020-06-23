@@ -1,6 +1,8 @@
 # wallet-tracker
 Wallet Tracker App Using JS and Firebase by Google<br>
-# Features
+
+<h1>Features</h1>
+
 1.  Sign Up Functionality
 2.  Google Sign In Functionality
 3.  Currency Converter
