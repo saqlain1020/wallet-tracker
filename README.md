@@ -1,12 +1,18 @@
 # wallet-tracker
-Wallet Tracker App Using JS and Firebase Firestore by Google<br>
-WishList:<br>
-Styling Required... for now..
-1. create account btn next to reset btn
-2. back btn on top left of signup to get back to sign in
-3. index page only with sign in when creat acc btn pressed fade in signup page
-4. Open Currency converter signup page top right and sign in everywhere add convertor link
-5. Search by description
-6. Add if email verified then add transaction
-7. Add Image
-8. Im martin fonts
+Wallet Tracker App Using JS and Firebase by Google<br>
+# Features
+1.  Sign Up Functionality
+2.  Google Sign In Functionality
+3.  Currency Converter
+4.  Email Verification
+5.  Change Username,Pass,Email,Picture
+6.  User image upload resized
+7.  Multiple transactions
+8.  Auto balance calculate
+9.  Change user currency
+10. Edit Transaction details
+11. Delete Transactions
+12. All Data stored on remote server
+13. Beautiful Canvas Animation
+14. Simple Materialistic UI
+15. Cross PLatform Compatibility
