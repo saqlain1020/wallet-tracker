@@ -122,9 +122,9 @@ var showAlert = (msg)=>{
     arr.forEach(element=>{
         element.innerHTML = msg;
         element.style.opacity = 1;
-        setTimeout(()=>{
-            element.style.opacity = 0;
-        },3000)
+        // setTimeout(()=>{
+        //     element.style.opacity = 0;
+        // },3000)
     })
     
 }
